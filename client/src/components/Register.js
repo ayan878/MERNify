@@ -1,21 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import avatar from "../assets/profile.png";
+import avatar from "../assets/upload.png";
 import toast, { Toaster } from "react-hot-toast";
 import { useFormik } from "formik";
 import convertToBase64 from "../helper/convert";
 import styles from "../styles/Username.module.css";
-import { passwordValidate } from "../helper/validate";
+import { registerValidation } from "../helper/validate";
 
 export default function Register() {
-  const [file, setFile] = useState([]);
+  const [file, setFile] = useState();
   const formik = useFormik({
     initialValues: {
       email: "",
       username: "",
       password: "",
     },
-    validate: passwordValidate,
+    validate: registerValidation,
     validateOnBlur: false,
     validateOnChange: false,
     onSubmit: async (values) => {
