@@ -42,6 +42,12 @@ function passwordVerify(error = {}, values) {
   return error;
 }
 
+//** validate profile page */
+export async function profileValidation(values) {
+  const errors = emailVerify({}, values);
+  return errors;
+}
+
 /* validate reset password */
 
 export async function resetPasswordValidation(values) {
@@ -51,4 +57,26 @@ export async function resetPasswordValidation(values) {
     errors.exist = toast.error("Password not match...!");
   }
   return errors;
+}
+
+//** validate the register form */
+export async function registerValidation(values) {
+  const errors = usernameVerify({}, values);
+  passwordVerify(errors, values);
+  emailVerify(errors, values);
+  return errors;
+}
+
+function emailVerify(error = {}, values) {
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!values.email) {
+    error.email = toast.error("Email Required...!");
+  } else if (values.email.includes(" ")) {
+    error.email = toast.error("Invalid email address!");
+  } else if (!emailRegex.test(values.email)) {
+    error.email = toast.error("Invalid email address!");
+  }
+
+  return error;
 }
