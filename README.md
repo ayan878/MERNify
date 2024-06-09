@@ -119,6 +119,17 @@ app.use(morgan("tiny"));
 ```
 - **`app.use(morgan("tiny"));`**: Adds a middleware function to log HTTP requests in a concise format (specified as "tiny"). This helps in tracking incoming requests and debugging.
 
+The "tiny" argument specifies the format of the logs. Morgan supports several predefined formats for logging, and "tiny" is one of the simplest. The "tiny" format includes:
+
+HTTP method (e.g., GET, POST)
+URL (e.g., /home, /api/users)
+HTTP version (e.g., HTTP/1.1)
+Response status code (e.g., 200, 404)
+Response time in milliseconds
+
+GET / 200 0.935 ms - 12
+
+
 ```javascript
 app.disable("x-power-by");
 ```
