@@ -9,6 +9,7 @@ const app = express();
 //**middleware */
 app.use(express.json());
 app.use(cors());
+// morgan library is used to log the http request inside the console
 app.use(morgan("tiny"));
 app.disable("x-powered-by"); // less hackers know about our stack
 
