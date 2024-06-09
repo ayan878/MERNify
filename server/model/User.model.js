@@ -32,6 +32,6 @@ export const UserSchema = new mongoose.Schema({
     type: String,
   },
 });
-// if we already have User model inside mongoDB database then use that n=model and return that user model and we have to specify with  plural  otherwise we get erorr message
+// if we already have User model inside mongoDB database then use that model and return that user model and we have to specify with  plural  otherwise we get erorr message
 export default mongoose.model.Users || mongoose.model("User", UserSchema);
 // existing model ||  new model
