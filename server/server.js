@@ -3,26 +3,29 @@ import cors from "cors";
 import morgan from "morgan";
 import connect from "./database/conn.js";
 import router from "./router/route.js";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
-//**middleware */
+// Middleware
 app.use(express.json());
 app.use(cors());
-// morgan library is used to log the http request inside the console
-app.use(morgan("tiny"));
+app.use(morgan("tiny")); // it log the http format to console 
 app.disable("x-powered-by"); // less hackers know about our stack
 
-//**HTTP GET Request */
+// HTTP GET Request
 app.get("/", (req, res) => {
   res.status(201).json("Home GET Request");
 });
 
-//**api routes */
+// API routes
 app.use("/api", router);
 
 const port = 8000;
-// **start server when have valid connection */
+
+// Start server when connected to database
 connect()
   .then(() => {
     try {
