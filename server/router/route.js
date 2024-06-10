@@ -1,27 +1,22 @@
 import { Router } from "express";
+import * as controller from "../controllers/Controller.js";
 
 const router = Router();
 
-//** import all the controllers */
-import * as controller from "../controllers/Controller.js";
-
-
 //** POST Methods */
-router.route("/register").post(controller.register); //register user;
-
-// router.route("/registerMail").post(); //send the email
-router.route("/authenticate").post((req, res) => res.end()); //authenticate user
-
-router.route("/login").post(controller.login);
+router.post("/register", controller.register); // Register user
+// router.post("/registerMail", controller.registerMail); // Send the email (implement this if needed)
+router.post("/authenticate", (req, res) => res.end()); // Authenticate user
+router.post("/login",controller.verifyUser, controller.login); // Login user
 
 //** GET Methods */
-router.route("/user/:username").get(controller.getUSer); // user with username
-router.route("/generateOTP").get(controller.generateOTP); // generate random OTP
-router.route("/verifyOTP").get(controller.verifyOTP); // verify generated OTP
-router.route("/createResetSession").get(controller.createResetSession); // reset all the variables
+router.get("/user/:username", controller.getUser); // Get user by username
+router.get("/generateOTP", controller.generateOTP); // Generate random OTP
+router.get("/verifyOTP", controller.verifyOTP); // Verify generated OTP
+router.get("/createResetSession", controller.createResetSession); // Reset all the variables
 
 //** PUT Methods */
-router.route("/updateuser").put(controller.updateUser); // use to update the user profile
-router.route("/reset").put(controller.resetPassword); // use to reset password
+router.put("/updateuser", controller.updateUser); // Update user profile
+router.put("/reset", controller.resetPassword); // Reset password
 
 export default router;
