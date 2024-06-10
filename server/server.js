@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import router from "./router/route.js";
 import dotenv from "dotenv";
 
+
 dotenv.config();
 
 const app = express();
@@ -25,6 +26,7 @@ app.disable("x-powered-by");
 app.get("/", (req, res) => {
   res.status(200).json("Home GET Request");
 });
+
 
 app.use("/api", router);
 
