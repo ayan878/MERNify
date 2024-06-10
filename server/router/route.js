@@ -1,5 +1,6 @@
 import { Router } from "express";
 import * as controller from "../controllers/Controller.js";
+import Auth from "../middleware/auth.js";
 
 const router = Router();
 
@@ -16,7 +17,11 @@ router.get("/verifyOTP", controller.verifyOTP); // Verify generated OTP
 router.get("/createResetSession", controller.createResetSession); // Reset all the variables
 
 //** PUT Methods */
-router.put("/updateuser", controller.updateUser); // Update user profile
+router.put("/updateuser",Auth, controller.updateUser); // Update user profile
 router.put("/reset", controller.resetPassword); // Reset password
+
+router.get("/test-auth", Auth, (req, res) => {
+  res.status(200).json({ message: "Authorization successful", user: req.user });
+});
 
 export default router;
