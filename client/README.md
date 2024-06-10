@@ -68,3 +68,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Backend
+- Install JWT Token 
+- cmd: openssl rand -base64 32
+- this will output a random Base64-encoded string
+    bXvlr9K4KbZG0pOYBdV5H0uNk6f8QDgsEj+0k9m6ZQ8=
+

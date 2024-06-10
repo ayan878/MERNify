@@ -259,4 +259,3 @@ connect().then(() => {
    - Define your Express routes as needed.
    - Start the Express server and log the URL where it's running.
 
-By using this setup, you can test your application with a dummy in-memory MongoDB database, which is especially useful for unit tests and development environments where you don't want to set up a real MongoDB instance.
