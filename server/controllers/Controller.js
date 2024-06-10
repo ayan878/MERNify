@@ -146,6 +146,7 @@ export async function getUser(req, res) {
 
 // Update a user's details
 /** PUT:http://localhost:8000/api/updateuser */
+
 export async function updateUser(req, res) {
   try {
     const { username, ...updateData } = req.body;
@@ -178,6 +179,8 @@ export async function updateUser(req, res) {
     res.status(500).send({ error: "Internal Server Error" });
   }
 }
+
+
 
 // Generate an OTP
 export async function generateOTP(req, res) {
